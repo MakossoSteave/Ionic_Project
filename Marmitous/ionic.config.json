@@ -1,0 +1,7 @@
+{
+  "name": "Marmitous",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
