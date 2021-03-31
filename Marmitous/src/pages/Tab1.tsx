@@ -44,7 +44,7 @@ const Tab1: React.FC = () => {
 
     <IonList>
       <IonListHeader lines="inset">
-        <IonLabel>Liste des recettes</IonLabel>
+        <IonLabel>Liste des plats</IonLabel>
       </IonListHeader>
    
      
