@@ -21,7 +21,8 @@ const Tab1: React.FC = () => {
     src: string;
     text: string;
   };
-  const items: Item[] = [];
+  const itemsRecent: Item[] = [];
+  const itemsBrowse: Item[] = [];
 
   const img = {
     src:
@@ -29,8 +30,11 @@ const Tab1: React.FC = () => {
     text: "Salade niçoise",
   };
 
+  for (let i = 0; i < 3; i++) {
+    itemsRecent.push(img);
+  }
   for (let i = 0; i < 10; i++) {
-    items.push(img);
+    itemsBrowse.push(img);
   }
 
   return (
@@ -52,7 +56,7 @@ const Tab1: React.FC = () => {
           </IonListHeader>
           <IonItem lines="none">
             <IonList>
-              {items.map((image, i) => (
+              {itemsRecent.map((image, i) => (
                 <IonItem key={i}>
                   <IonThumbnail slot="start">
                     <IonImg src={image.src} />
@@ -71,7 +75,7 @@ const Tab1: React.FC = () => {
         </IonList>
         <IonGrid>
           <IonRow>
-            {items.map((image, i) => (
+            {itemsBrowse.map((image, i) => (
               <IonItem key={i}>
                 <IonCol>
                   {" "}
