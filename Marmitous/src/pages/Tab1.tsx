@@ -15,6 +15,7 @@ import {
 } from "@ionic/react";
 
 import "./Tab1.css";
+import { Route } from "react-router-dom";
 
 const Tab1: React.FC = () => {
   type Item = {
