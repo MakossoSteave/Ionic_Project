@@ -16,15 +16,14 @@ import "./Recette.css";
 import { Storage } from "@ionic/storage";
 import FavButton from "../components/FavButton";
 
-const Recette: React.FC = () => {
+const Salade: React.FC = () => {
   const image = {
     src:
       "https://www.toutlevin.com/img/1309ccef4a22d5ef95eb4c6dd6a2d60a004740003000-960.jpg",
     text: "Salade niçoise",
   };
 
-  const name = "salade";
-
+  const name = "/pizza";
   return (
     <IonPage>
       <IonHeader>
@@ -36,18 +35,9 @@ const Recette: React.FC = () => {
         <IonImg src={image.src} />
         <IonLabel>{image.text}</IonLabel>
         <FavButton libelle={name}>favorie</FavButton>
-        <FavButton libelle="pates">favorie</FavButton>
-        <FavButton libelle="pizza">favorie</FavButton>
-        {/*
-        <IonToast
-          isOpen={state}
-          onDidDismiss={() => setState(false)}
-          message="Toasty !"
-          duration={200}
-        ></IonToast>*/}
       </IonContent>
     </IonPage>
   );
 };
 
-export default Recette;
+export default Salade;

@@ -12,16 +12,21 @@ import {
   IonGrid,
   IonRow,
   IonCol,
+  useIonViewWillEnter,
 } from "@ionic/react";
 
 import "./Tab1.css";
-import { Route } from "react-router-dom";
+import { Redirect, Route, useHistory } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Tab1: React.FC = () => {
   type Item = {
     src: string;
     text: string;
   };
+  const [link, setLink] = useState("");
+  const history = useHistory();
+
   const itemsRecent: Item[] = [];
   const itemsBrowse: Item[] = [];
 
@@ -38,19 +43,60 @@ const Tab1: React.FC = () => {
     itemsBrowse.push(img);
   }
 
+  let f = localStorage.getItem("favorie");
+  const [fav, setFav] = useState([""]);
+  useIonViewWillEnter(() => {
+    f = localStorage.getItem("favorie");
+    const favo = [""];
+    if (f !== null) {
+      const t = f.split(",");
+      t.map((i) => {
+        if (i !== "") {
+          favo.push(i);
+        }
+      });
+    }
+    setFav(favo);
+  });
+
+  const handleLink = (path: string) => {
+    localStorage.setItem("path", path);
+    history.replace(path);
+  };
+  useEffect(() => {
+    if (link !== "") {
+      handleLink(link);
+    }
+  }, [link]);
+
   return (
     <IonPage>
       <IonContent>
         <IonListHeader>
           <IonLabel>Marmitous</IonLabel>
         </IonListHeader>
-
         <iframe
           src="https://www.youtube.com/embed/Gvzfwuw1PZE"
           width="200"
           height="150"
         ></iframe>
+        {
+          //<IonButton onClick={() => setLink("Salade")}>Salade</IonButton>
+        }
+        <IonListHeader lines="inset">
+          <IonLabel>Favoris</IonLabel>
+        </IonListHeader>
+        <IonList>
+          {fav.map((f, i) => (
+            <IonItem key={i}>
+              <a href={f}>{f}</a>
+            </IonItem>
+          ))}
+        </IonList>
 
+        <IonButton onClick={() => setLink("/salade")}>Salade</IonButton>
+        <IonButton onClick={() => setLink("/pizza")}>Pizza</IonButton>
+        <IonButton onClick={() => setLink("/pates")}>Pates</IonButton>
         <IonList>
           <IonListHeader lines="inset">
             <IonLabel>Recent</IonLabel>
@@ -68,7 +114,6 @@ const Tab1: React.FC = () => {
             </IonList>
           </IonItem>
         </IonList>
-
         <IonList>
           <IonListHeader lines="inset">
             <IonLabel>Liste des plats</IonLabel>

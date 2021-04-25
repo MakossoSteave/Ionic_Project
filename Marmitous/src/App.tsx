@@ -33,14 +33,17 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 import Recette from "./pages/Recette";
+import Salade from "./pages/Salade";
+import Pates from "./pages/Pates";
+import Pizza from "./pages/Pizza";
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/recette">
-            <Recette />
+          <Route exact path="/tab1">
+            <Tab1 />
           </Route>
           <Route exact path="/tab2">
             <Tab2 />
@@ -48,12 +51,21 @@ const App: React.FC = () => (
           <Route path="/tab3">
             <Tab3 />
           </Route>
+          <Route path="/salade">
+            <Salade />
+          </Route>
+          <Route path="/pizza">
+            <Pizza />
+          </Route>
+          <Route path="/pates">
+            <Pates />
+          </Route>
           <Route exact path="/">
             <Redirect to="/tab1" />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="recette" href="/recette">
+          <IonTabButton tab="tab1" href="/tab1">
             <IonIcon icon={home} />
             <IonLabel>Accueil</IonLabel>
           </IonTabButton>
