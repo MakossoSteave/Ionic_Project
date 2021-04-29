@@ -12,7 +12,7 @@ import {
 } from "@ionic/react";
 import { useEffect, useState } from "react";
 import ExploreContainer from "../components/ExploreContainer";
-import "./Recette.css";
+import styles from "./Recette.module.css";
 import { Storage } from "@ionic/storage";
 import FavButton from "../components/FavButton";
 

@@ -1,0 +1,33 @@
+.contenue{
+    height: 200px;
+    padding: 3px;
+    margin: 5px 2px;  
+}
+.vote{
+    padding: 3px;
+    margin: 5px 2px;
+    width: fit-content;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.libelle{
+    text-align: center;
+    font-weight: bold;
+    color: hsl(36deg 100% 40%);
+    border-top: 2px solid #ff9800;
+    padding: 5px;
+    width: 95%;
+    margin: auto;
+}
+.etape{
+    background-color: #ff9800;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+}

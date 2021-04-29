@@ -1,7 +1,10 @@
-import { IonButton, useIonViewWillEnter } from "@ionic/react";
+import { IonButton, IonIcon, useIonViewWillEnter } from "@ionic/react";
 import { useEffect, useState } from "react";
 import React from "react";
+import { heart, heartOutline } from "ionicons/icons";
+import { setUncaughtExceptionCaptureCallback } from "process";
 
+import styled from "styled-components";
 interface IButton {
   libelle: string;
 }
@@ -10,6 +13,7 @@ const FavButton: React.FC<IButton> = ({ libelle }) => {
   const [state, setState] = useState(-1);
   const [faved, setFaved] = useState(false);
   const [name, setName] = useState(libelle);
+  const [icon, setIcon] = useState(heartOutline);
   useIonViewWillEnter(() => {
     let fav = localStorage.getItem("favorie");
 
@@ -73,10 +77,27 @@ const FavButton: React.FC<IButton> = ({ libelle }) => {
       setFaved(false);
     }
   }, [state]);
+  useEffect(() => {
+    setIcon(faved ? heart : heartOutline);
+  }, [faved]);
+
+  const FavButtonS = styled.div`
+    .buttonFav {
+      background-color: white;
+    }
+
+    ion-icon {
+      height: 25px;
+      width: 25px;
+      color: deeppink;
+    }
+  `;
   return (
-    <IonButton onClick={() => handleClick()}>
-      favorie {faved && libelle}
-    </IonButton>
+    <FavButtonS>
+      <button className="buttonFav" onClick={() => handleClick()}>
+        <IonIcon slot="start" icon={icon}></IonIcon>
+      </button>
+    </FavButtonS>
   );
 };
 

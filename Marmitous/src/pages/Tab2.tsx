@@ -4,26 +4,28 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  useIonViewWillEnter,
 } from "@ionic/react";
 import ExploreContainer from "../components/ExploreContainer";
 import "./Tab2.css";
-import { Redirect, useHistory } from "react-router-dom";
-interface Itab2 {
-  path?: string;
-}
 
 const Tab2: React.FC = () => {
-  const history = useHistory();
-  useIonViewWillEnter(() => {
-    const link = localStorage.getItem("path");
-    if (link !== null) {
-      history.replace(link);
-    } else {
-      history.replace("/tab1");
-    }
-  });
-  return <IonPage></IonPage>;
+  return (
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Tab 2</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent fullscreen>
+        <IonHeader collapse="condense">
+          <IonToolbar>
+            <IonTitle size="large">Tab 2</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <ExploreContainer name="Tab 2 page" />
+      </IonContent>
+    </IonPage>
+  );
 };
 
 export default Tab2;

@@ -47,12 +47,12 @@ const Tab1: React.FC = () => {
   const [fav, setFav] = useState([""]);
   useIonViewWillEnter(() => {
     f = localStorage.getItem("favorie");
-    const favo = [""];
+    const favo: string[] = [];
     if (f !== null) {
       const t = f.split(",");
-      t.map((i) => {
-        if (i !== "") {
-          favo.push(i);
+      t.map((f, i) => {
+        if (f !== "") {
+          favo[i] = f;
         }
       });
     }
@@ -75,21 +75,14 @@ const Tab1: React.FC = () => {
         <IonListHeader>
           <IonLabel>Marmitous</IonLabel>
         </IonListHeader>
-        <iframe
-          src="https://www.youtube.com/embed/Gvzfwuw1PZE"
-          width="200"
-          height="150"
-        ></iframe>
-        {
-          //<IonButton onClick={() => setLink("Salade")}>Salade</IonButton>
-        }
+
         <IonListHeader lines="inset">
           <IonLabel>Favoris</IonLabel>
         </IonListHeader>
         <IonList>
           {fav.map((f, i) => (
             <IonItem key={i}>
-              <a href={f}>{f}</a>
+              <IonButton onClick={() => setLink(f)}>{f}</IonButton>
             </IonItem>
           ))}
         </IonList>

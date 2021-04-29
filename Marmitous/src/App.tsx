@@ -32,10 +32,10 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import Recette from "./pages/Recette";
 import Salade from "./pages/Salade";
 import Pates from "./pages/Pates";
 import Pizza from "./pages/Pizza";
+import QuickAcces from "./pages/QuickAcces";
 
 const App: React.FC = () => (
   <IonApp>
@@ -50,6 +50,9 @@ const App: React.FC = () => (
           </Route>
           <Route path="/tab3">
             <Tab3 />
+          </Route>
+          <Route path="/quickacces">
+            <QuickAcces />
           </Route>
           <Route path="/salade">
             <Salade />
@@ -76,6 +79,10 @@ const App: React.FC = () => (
           <IonTabButton tab="tab3" href="/tab3">
             <IonIcon icon={square} />
             <IonLabel>Mix</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="tab4" href="/quickacces">
+            <IonIcon icon={square} />
+            <IonLabel>Quick acces</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
