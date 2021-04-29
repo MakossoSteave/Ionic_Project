@@ -36,6 +36,7 @@ import Salade from "./pages/Salade";
 import Pates from "./pages/Pates";
 import Pizza from "./pages/Pizza";
 import QuickAcces from "./pages/QuickAcces";
+import Recette from "./pages/Recette";
 
 const App: React.FC = () => (
   <IonApp>
@@ -62,6 +63,9 @@ const App: React.FC = () => (
           </Route>
           <Route path="/pates">
             <Pates />
+          </Route>
+          <Route path="/recette">
+            <Recette />
           </Route>
           <Route exact path="/">
             <Redirect to="/tab1" />

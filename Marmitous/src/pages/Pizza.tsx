@@ -16,7 +16,7 @@ import styles from "./Recette.module.css";
 import { Storage } from "@ionic/storage";
 import FavButton from "../components/FavButton";
 
-const Salade: React.FC = () => {
+const Pizza: React.FC = () => {
   const image = {
     src:
       "https://www.toutlevin.com/img/1309ccef4a22d5ef95eb4c6dd6a2d60a004740003000-960.jpg",
@@ -63,4 +63,4 @@ const Salade: React.FC = () => {
   );
 };
 
-export default Salade;
+export default Pizza;
