@@ -12,11 +12,18 @@ interface IButton {
 const FavButton: React.FC<IButton> = ({ libelle }) => {
   const [state, setState] = useState(-1);
   const [faved, setFaved] = useState(false);
-  const [name, setName] = useState(libelle);
+  //const [name, setName] = useState(libelle);
   const [icon, setIcon] = useState(heartOutline);
+
+  let name = libelle;
+
   useIonViewWillEnter(() => {
     let fav = localStorage.getItem("favorie");
-
+    let actv = localStorage.getItem("active");
+    if (actv !== null) {
+      //setName(actv);
+      name = actv;
+    }
     if (fav !== null) {
       const t = fav.split(",");
       let gate = false;

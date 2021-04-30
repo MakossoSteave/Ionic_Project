@@ -32,9 +32,6 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import Salade from "./pages/Salade";
-import Pates from "./pages/Pates";
-import Pizza from "./pages/Pizza";
 import QuickAcces from "./pages/QuickAcces";
 import Recette from "./pages/Recette";
 
@@ -54,15 +51,6 @@ const App: React.FC = () => (
           </Route>
           <Route path="/quickacces">
             <QuickAcces />
-          </Route>
-          <Route path="/salade">
-            <Salade />
-          </Route>
-          <Route path="/pizza">
-            <Pizza />
-          </Route>
-          <Route path="/pates">
-            <Pates />
           </Route>
           <Route path="/recette">
             <Recette />

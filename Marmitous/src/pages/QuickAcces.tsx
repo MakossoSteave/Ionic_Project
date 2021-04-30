@@ -16,12 +16,19 @@ interface Iquick {
 const QuickAcces: React.FC = () => {
   const history = useHistory();
   useIonViewWillEnter(() => {
+    const page = localStorage.getItem("page");
+    if (page !== null) {
+      history.replace("/Recette");
+    } else {
+      history.replace("/tab1");
+    }
+    /*
     const link = localStorage.getItem("path");
     if (link !== null) {
       history.replace(link);
     } else {
       history.replace("/tab1");
-    }
+    }*/
   });
   return <IonPage></IonPage>;
 };

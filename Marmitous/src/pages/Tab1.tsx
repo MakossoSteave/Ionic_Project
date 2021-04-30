@@ -13,11 +13,14 @@ import {
   IonRow,
   IonCol,
   useIonViewWillEnter,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/react";
 
 import "./Tab1.css";
 import { Redirect, Route, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
+import styles from "./Page.module.css";
 
 const Tab1: React.FC = () => {
   type Item = {
@@ -126,7 +129,7 @@ const Tab1: React.FC = () => {
   const recette3 = {
     src:
       "https://fr.rc-cdn.community.thermomix.com/recipeimage/dj5xw1q5-ae599-739584-cfcd2-3jrlw9n5/fa418411-a400-4f04-a7ba-51eb6ffb99d0/main/fondant-au-chocolat.jpg",
-    text: "fondant au chocolat",
+    text: "Fondant au chocolat",
     video: "https://www.youtube.com/embed/Exbdy6I-WCI",
     preparation: listeC,
     temps: "30 minutes",
@@ -142,19 +145,24 @@ const Tab1: React.FC = () => {
   itemsBrowse.push(recette3);
 
   let f = localStorage.getItem("favorie");
-  const [fav, setFav] = useState([""]);
+  const [fav, setFav] = useState<Array<Item>>([]);
   useIonViewWillEnter(() => {
     f = localStorage.getItem("favorie");
-    const favo: string[] = [];
+    const favo: Item[] = [];
     if (f !== null) {
       const t = f.split(",");
       t.map((f, i) => {
         if (f !== "") {
-          favo[i] = f;
+          itemsBrowse.map((item, ii) => {
+            if (item.text === f) {
+              favo[i] = item;
+            }
+          });
         }
       });
     }
     setFav(favo);
+    console.log(favo);
   });
   /*
   const handleLink = (path: string) => {
@@ -183,16 +191,20 @@ const Tab1: React.FC = () => {
     <IonPage>
       <IonContent>
         <IonListHeader>
-          <IonLabel>Marmitous</IonLabel>
+          <IonToolbar>
+            <IonTitle>Marmitous</IonTitle>
+          </IonToolbar>
         </IonListHeader>
 
-        <IonListHeader lines="inset">
-          <IonLabel>Favoris</IonLabel>
-        </IonListHeader>
+        <div className={styles.libelle}>Favoris</div>
+
         <IonList>
           {fav.map((f, i) => (
-            <IonItem key={i}>
-              <IonButton onClick={() => setLink(f)}>{f}</IonButton>
+            <IonItem onClick={() => setPage(f)} key={i}>
+              <IonThumbnail slot="start">
+                <IonImg src={f.src} />
+              </IonThumbnail>
+              <IonLabel>{f.text}</IonLabel>
             </IonItem>
           ))}
         </IonList>
@@ -201,10 +213,9 @@ const Tab1: React.FC = () => {
         <IonButton onClick={() => setLink("/pizza")}>Pizza</IonButton>
         <IonButton onClick={() => setLink("/pates")}>Pates</IonButton>
         */}
+        {/*
         <IonList>
-          <IonListHeader lines="inset">
-            <IonLabel>Recent</IonLabel>
-          </IonListHeader>
+          <div className={styles.libelle}>Recent</div>
           <IonItem lines="none">
             <IonList>
               {itemsRecent.map((p, i) => (
@@ -217,18 +228,18 @@ const Tab1: React.FC = () => {
               ))}
             </IonList>
           </IonItem>
-        </IonList>
-        <IonList>
-          <IonListHeader lines="inset">
-            <IonLabel>Liste des plats</IonLabel>
-          </IonListHeader>
-        </IonList>
+        </IonList>*/}
+        <div className={styles.libelle}>Liste des plat</div>
         <IonGrid>
           <IonRow>
             {itemsRecent.map((p, i) => (
-              <IonItem onClick={() => setPage(p)} key={i}>
+              <IonItem
+                className={styles.item}
+                onClick={() => setPage(p)}
+                key={i}
+              >
                 <IonCol>
-                  <IonLabel>{p.text}</IonLabel>
+                  <IonLabel className={styles.label}>{p.text}</IonLabel>
                   <IonImg src={p.src} />
                 </IonCol>
               </IonItem>

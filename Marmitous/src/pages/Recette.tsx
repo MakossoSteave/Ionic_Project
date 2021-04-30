@@ -13,7 +13,7 @@ import {
 } from "@ionic/react";
 import { useEffect, useState } from "react";
 import ExploreContainer from "../components/ExploreContainer";
-import styles from "./Recette.module.css";
+import styles from "./Page.module.css";
 import { Storage } from "@ionic/storage";
 import FavButton from "../components/FavButton";
 
@@ -40,6 +40,7 @@ const Recette: React.FC = () => {
       setVideo(v.toString());
       setPrep(page.preparation);
       setIngre(page.ingredient);
+      localStorage.setItem("active", page.text);
     }
   };
 
@@ -63,7 +64,8 @@ const Recette: React.FC = () => {
           allowFullScreen
         ></iframe>
         <div className={styles.flex}>
-          <FavButton libelle={name}>favorie</FavButton>
+          {console.log("title", title)}
+          <FavButton libelle={title}>favorie</FavButton>
           {/*<div className={styles.vote}>{vote}</div>*/}
         </div>
         <div className={styles.libelle}>{temps}</div>
