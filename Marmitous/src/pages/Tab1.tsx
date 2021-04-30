@@ -15,6 +15,7 @@ import {
   useIonViewWillEnter,
   IonTitle,
   IonToolbar,
+  IonHeader,
 } from "@ionic/react";
 
 import "./Tab1.css";
@@ -189,13 +190,12 @@ const Tab1: React.FC = () => {
 
   return (
     <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Marmitous</IonTitle>
+        </IonToolbar>
+      </IonHeader>
       <IonContent>
-        <IonListHeader>
-          <IonToolbar>
-            <IonTitle>Marmitous</IonTitle>
-          </IonToolbar>
-        </IonListHeader>
-
         <div className={styles.libelle}>Favoris</div>
 
         <IonList>
